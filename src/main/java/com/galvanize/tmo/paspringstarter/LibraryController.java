@@ -18,8 +18,9 @@ public class LibraryController {
 	private ILibraryService libraryService;
 	
     @GetMapping("/health")
-    public void health() {
-
+    @ResponseBody
+    public String health() {
+    	return "Healthy";
     }
     
 /**
