@@ -3,7 +3,12 @@ package com.galvanize.tmo.Entity;
 
 public class Book{
 	
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
     public String getAuthor() {
 		return author;
 	}
@@ -22,15 +27,11 @@ public class Book{
 	public void setYearPublished(int yearPublished) {
 		this.yearPublished = yearPublished;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
+	private int id;
 	private String author;
     private  String title;
     private int yearPublished;
    
-    private int id;
+    
 }

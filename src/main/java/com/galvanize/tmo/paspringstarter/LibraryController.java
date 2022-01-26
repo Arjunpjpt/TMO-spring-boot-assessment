@@ -1,5 +1,8 @@
 package com.galvanize.tmo.paspringstarter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,7 +69,8 @@ public class LibraryController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new ResponseEntity<>("Something went wrong", HttpStatus.BAD_REQUEST);
+		List<Book> bookList= new ArrayList<Book>(); 
+		return new ResponseEntity<>(bookList, HttpStatus.BAD_REQUEST);
 
 	}
 

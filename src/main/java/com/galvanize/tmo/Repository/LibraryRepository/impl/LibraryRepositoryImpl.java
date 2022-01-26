@@ -51,7 +51,8 @@ public class LibraryRepositoryImpl implements ILibraryRepository {
 	public Book saveBook(Book book) throws Exception {
 		try {
 
-			System.out.println("Repository");
+			System.out.println("Repository"+book.getId());
+			System.out.println("--------");
 			String insertQ = "insert into book (author, title, yearPublished) values ('" + book.getAuthor() + "', '"
 					+ book.getTitle() + "', " + book.getYearPublished() + ")";
 
