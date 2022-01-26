@@ -51,10 +51,13 @@ public class LibraryRepositoryImpl implements ILibraryRepository {
 	public Book saveBook(Book book) throws Exception {
 		try {
 
-			System.out.println("Repository"+book.getId());
+			System.out.println("Repository"+book.getTitle());
 			System.out.println("--------");
-			String insertQ = "insert into book (author, title, yearPublished) values ('" + book.getAuthor() + "', '"
-					+ book.getTitle() + "', " + book.getYearPublished() + ")";
+			String titleI = book.getTitle().replace("'","''");
+			String authorI = book.getAuthor().replace("'","''");
+
+			String insertQ = "insert into book (author, title, yearPublished) values ('" + authorI + "', '"
+					+ titleI + "', " + book.getYearPublished() + ")";
 
 			int a = jdbcTemplate.update(insertQ);
 			book.setId(0);
