@@ -1,6 +1,8 @@
 package com.galvanize.tmo.paspringstarter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,18 +29,22 @@ public class LibraryController {
  * To save a book
  * @param book
  */
-    @PostMapping("/saveBook")
+    @PostMapping("/books")
     @ResponseBody
-    public Book saveBook(@RequestBody Book book)  {
+    public ResponseEntity<?> saveBook(@RequestBody Book book)  {
     	System.out.println("Controller");
 //    	System.out.println();
 
     	try {
-			return libraryService.saveBook(book);
+    		Book bookR = libraryService.saveBook(book);
+			if(bookR.getId()>0) {
+				return new ResponseEntity<>(bookR, HttpStatus.CREATED);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return book;
+			
 		}
+		return new ResponseEntity<>(book, HttpStatus.BAD_REQUEST);
     }
 }
