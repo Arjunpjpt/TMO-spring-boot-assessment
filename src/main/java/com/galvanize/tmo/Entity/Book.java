@@ -1,6 +1,6 @@
 package com.galvanize.tmo.Entity;
 
-//@Entity
+
 public class Book{
 	
 	
@@ -31,6 +31,6 @@ public class Book{
 	private String author;
     private  String title;
     private int yearPublished;
-    
+   
     private int id;
 }

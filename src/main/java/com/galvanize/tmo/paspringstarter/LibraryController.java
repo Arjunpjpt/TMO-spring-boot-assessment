@@ -29,10 +29,16 @@ public class LibraryController {
  */
     @PostMapping("/saveBook")
     @ResponseBody
-    public Book saveBook(@RequestBody Book book) {
+    public Book saveBook(@RequestBody Book book) throws Exception {
     	System.out.println("Controller");
 //    	System.out.println();
 
-    	return libraryService.saveBook(book);
+    	try {
+			return libraryService.saveBook(book);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return book;
+		}
     }
 }

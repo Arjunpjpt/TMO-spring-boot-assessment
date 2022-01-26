@@ -15,6 +15,13 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	
+implementation "postgresql:postgresql:9.1-901.jdbc4"
+//compile 'org.apache.commons:commons-dbcp2:2.9.0'
+implementation group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+
+
 }
 
 test {
