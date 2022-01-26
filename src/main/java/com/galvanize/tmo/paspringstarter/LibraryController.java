@@ -29,7 +29,7 @@ public class LibraryController {
  */
     @PostMapping("/saveBook")
     @ResponseBody
-    public Book saveBook(@RequestBody Book book) throws Exception {
+    public Book saveBook(@RequestBody Book book)  {
     	System.out.println("Controller");
 //    	System.out.println();
 

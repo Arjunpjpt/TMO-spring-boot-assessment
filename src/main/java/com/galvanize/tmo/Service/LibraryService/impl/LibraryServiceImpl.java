@@ -18,7 +18,6 @@ public class LibraryServiceImpl implements ILibraryService {
 	
 	@Override
 	public Book saveBook(Book book) throws Exception {
-		System.out.println("Service");
 		return libraryRepository.saveBook(book);
 	}
 }

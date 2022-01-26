@@ -29,31 +29,27 @@ public class LibraryRepositoryImpl implements ILibraryRepository{
 	public Book saveBook(Book book) throws Exception {
 		try {
 			
-			//
-//			try {
-//			 Statement stmt = dataSource.getConnection().createStatement();
-//		       
-//		        ResultSet rss = stmt.executeQuery("Select * from book");
-//		        while (rss.next()) {
-//		            System.out.println("Read from DB: " + rss.getString("title"));
-//		        }
-//			
-//			}catch (Exception e) {
-//				System.out.println("Error --1- repo");
-//				System.out.println(e);
-//			}
-			//
+
 			
 			
 			System.out.println("Repository");
-			String selectQ = "Select * from book";
-			SqlRowSet rs = jdbcTemplate.queryForRowSet(selectQ);
-			
-			while(rs.next()){
-				
-				System.out.println("========"+rs.getString("title"));
-				
+			String insertQ = "insert into book (author, title, yearPublished) values ('"+book.getAuthor()+"', '"+book.getTitle()+"', "+book.getYearPublished()+")";
+
+			int a =jdbcTemplate.update(insertQ);
+			book.setId(0);
+
+			if(a==1) {
+				String selectQ = "SELECT * \n" + 
+						"FROM book \n" + 
+						"WHERE id = (SELECT MAX(id) FROM book)";
+				SqlRowSet rs=jdbcTemplate.queryForRowSet(selectQ);
+				while(rs.next()) {
+					int id = Integer.parseInt(rs.getString("id"));
+					book.setId(id);
+				}
+				return book;
 			}
+			System.out.println("====="+a);
 }catch (Exception e) {
 			System.out.println("Error --- repo");
 			System.out.println(e);
