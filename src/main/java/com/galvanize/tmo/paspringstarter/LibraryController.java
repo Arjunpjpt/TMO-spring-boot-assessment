@@ -1,6 +1,7 @@
 package com.galvanize.tmo.paspringstarter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,13 +65,14 @@ public class LibraryController {
 	public ResponseEntity<?> getBooks() {
 
 		try {
-			return new ResponseEntity<>(libraryService.getBooks(), HttpStatus.OK);
+			HashMap<String, List> hm =new HashMap<>();
+			hm.put("books", libraryService.getBooks());
+			return new ResponseEntity<>(hm, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		List<Book> bookList= new ArrayList<Book>(); 
-		return new ResponseEntity<>(bookList, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
 
 	}
 
